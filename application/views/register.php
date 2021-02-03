@@ -21,8 +21,15 @@
 
   <div class="main">
     <div class="col-md-6 col-sm-12">
-      <div class="login-form">
+      <div class="register-form">
         <form role="form" action="signup" method="POST">
+          <!-- condición de mensaje -->
+          <?php if($showMsg) : ?>
+            <div class="alert alert-danger" role="alert">
+              <small><?php echo $msg; ?></small>
+            </div>
+          <?php endif; ?>
+
           <div class="form-group">
             <label>Nombre</label>
             <input type="text" class="form-control" placeholder="Ingresa tu nombre" name="nombre" required>
@@ -40,7 +47,7 @@
 
           <input type="submit" class="btn btn-black" value="REGISTRAR">
 
-          <button type="submit" class="btn btn-secondary"><a href="login">IR A INICIO SESIÓN</a></button>
+          <button type="submit" class="btn btn-secondary"><a href="./login">IR A INICIO SESIÓN</a></button>
 
         </form>
       </div>

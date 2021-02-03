@@ -10,9 +10,6 @@ class Usuarios extends CI_Controller {
   }
 
   public function signup() {
-    /* foreach($_POST as $key => $value) {
-      $data[$key] = $value;
-    } */
     $data['nombre'] = $_POST['nombre'];
     $data['correo'] = $_POST['correo'];
     //$data['password'] = md5($_POST['password']);
@@ -30,18 +27,25 @@ class Usuarios extends CI_Controller {
 
   public function login() {
     /* validacion de formulario en vervose POST no vacio */
-    if($this->input->post()) {
+    if(!empty($_POST)) {
       $data['correo'] = $_POST['correo'];
       $data['password'] = md5($_POST['password']);
 
       $usuario = $this->Usuario->verificar($data);
-      // TODO
+      // erificar que el usuario exista y la contraseña sea la correcta
       if(empty($usuario)) {
-        echo "usuario no existe";
+        $params['msg'] = 'Usuario no registrado o contraseña incorrecta';
+        $params['showMsg'] = true;
+        $this->load->view('login', $params);
       }
       else {
         header('Location:'.base_url().'home');
       }
+    }
+    else {
+      $params['msg'] = 'Completa todos los campos';
+      $params['showMsg'] = true;
+      $this->load->view('login', $params);
     }
   }
 }

@@ -23,6 +23,13 @@
     <div class="col-md-6 col-sm-12">
       <div class="login-form">
         <form role="form" action="signin" method="POST">
+          <!-- condición de mensaje -->
+          <?php if($showMsg) : ?>
+            <div class="alert alert-danger" role="alert">
+              <small><?php echo $msg; ?></small>
+            </div>
+          <?php endif; ?>
+          
           <div class="form-group">
             <label>Correo electronico</label>
             <input type="text" class="form-control" placeholder="Ingresa tu correo electronico" name="correo" required>

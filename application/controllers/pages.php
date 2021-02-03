@@ -8,7 +8,8 @@ class Pages extends CI_Controller {
   }
 
   public function login() {
-    $this->load->view('login');
+    $params['showMsg'] = false;
+    $this->load->view('login', $params);
   }
 
   public function nopagefound() {
@@ -16,11 +17,7 @@ class Pages extends CI_Controller {
   }
 
   public function register() {
-    $this->load->view('register');
+    $params['showMsg'] = false;
+    $this->load->view('register', $params);
   }
-  /*  */
-  /* public function index($page="home") {
-    $this->load->view($page);
-  } */
-  /*  */
 }
