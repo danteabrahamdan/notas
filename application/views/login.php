@@ -24,6 +24,7 @@
       <div class="login-form">
         <form role="form" action="signin" method="POST">
           <!-- condición de mensaje -->
+          
           <?php if($showMsg) : ?>
             <div class="alert alert-danger" role="alert">
               <small><?php echo $msg; ?></small>

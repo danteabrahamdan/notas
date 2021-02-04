@@ -166,7 +166,8 @@
 	<!-- Bootstrap core JavaScript -->
   <script src="<?php echo base_url(); ?>res/js/jquery-3.4.1.slim.min.js"></script>
   <script src="<?php echo base_url(); ?>res/js/popper.min.js"></script>
-	<script src="<?php echo base_url(); ?>res/js/bootstrap.min.js"></script>
-
+  <script src="<?php echo base_url(); ?>res/js/bootstrap.min.js"></script>
+  <script src="<?php echo base_url(); ?>res/js/app.js"></script>
+  
 </body>
 </html>

@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <div class="main">
+  <div class="main" style="padding-top: 8%;">
     <div class="col-md-6 col-sm-12">
       <div class="register-form">
         <form role="form" action="signup" method="POST">

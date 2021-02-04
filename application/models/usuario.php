@@ -17,6 +17,11 @@ class Usuario extends CI_Model {
     return ($rows);
   }
 
+  public function compareEmail($data) {
+    $sql = "select * from usuarios where correo='".$data['correo']."'";
+    return ($this->devuelveData($sql));
+  }
+
   public function insert($table, $data) {
     $this->db->insert($table, $data);
   }
