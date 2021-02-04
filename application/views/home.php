@@ -8,6 +8,25 @@
   <title>Notas</title>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>res/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <style>
+    .float{
+      position:fixed;
+      width:60px;
+      height:60px;
+      bottom:40px;
+      right:40px;
+      background-color:#000;
+      color:#FFF;
+      border-radius:50px;
+      text-align:center;
+      box-shadow: 2px 2px 3px rgba(99, 99, 99, .4);
+    }
+
+    .my-float{
+      margin-top:22px;
+    }
+  </style>
 </head>
 <body style="padding-top: 56px;">
 
@@ -50,7 +69,7 @@
           <div class="card-body">
             <h2 class="card-title">Titulo nota</h2>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="./post" class="btn btn-primary">Read More &rarr;</a>
+            <a href="./post" class="btn btn-primary">Ver más &rarr;</a>
           </div>
           <div class="card-footer text-muted">
             Creado el 1 de Enero del 2021 por 
@@ -63,7 +82,7 @@
           <div class="card-body">
 						<h2 class="card-title">Titulo nota</h2>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="./post" class="btn btn-primary">Read More &rarr;</a>
+            <a href="./post" class="btn btn-primary">Ver más &rarr;</a>
           </div>
           <div class="card-footer text-muted">
 						Creado el 2 de Enero del 2021 por 
@@ -76,24 +95,13 @@
           <div class="card-body">
 						<h2 class="card-title">Titulo nota</h2>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="./post" class="btn btn-primary">Read More &rarr;</a>
+            <a href="./post" class="btn btn-primary">Ver más &rarr;</a>
           </div>
           <div class="card-footer text-muted">
 						Creado el 5 de Enero del 2021 por 
             <a href="#">Lorem</a>
           </div>
         </div>
-
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
-
       </div>
 
       <!-- Sidebar Widgets Column -->
@@ -162,6 +170,46 @@
       <p class="m-0 text-center text-white" id="presYear">Copyright &copy; Mis Notas.</p>
     </div>
   </footer>
+  
+  <!-- ------------------------------------------------------------------------- -->
+  <!--                                   Nuevo código                            -->
+  <!-- ------------------------------------------------------------------------- -->
+  <a href="#" class="float" data-toggle="modal" data-target="#exampleModal">
+    <i class="fa fa-plus my-float"></i>
+  </a>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nueva Nota</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form role="form" action="" method="POST">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Nombre de la nota</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingresa un titulo para la nota" name="titulo" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Descripción de la nota</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion" required></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <input type="submit" value="Guardar" class="btn btn-primary">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ------------------------------------------------------------------------- -->
+  <!--                               fin Nuevo código                            -->
+  <!-- ------------------------------------------------------------------------- -->
 
 	<!-- Bootstrap core JavaScript -->
   <script src="<?php echo base_url(); ?>res/js/jquery-3.4.1.slim.min.js"></script>

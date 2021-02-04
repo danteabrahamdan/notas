@@ -13,8 +13,13 @@ class Pages extends CI_Controller {
   }
 
   public function login() {
-    $params['showMsg'] = false;
-    $this->load->view('login', $params);
+    if($this->session->userdata('id')) {
+      redirect(base_url());
+    }
+    else {
+      $params['showMsg'] = false;
+      $this->load->view('login', $params);
+    }
   }
 
   public function nopagefound() {
@@ -22,7 +27,12 @@ class Pages extends CI_Controller {
   }
 
   public function register() {
-    $params['showMsg'] = false;
-    $this->load->view('register', $params);
+    if($this->session->userdata('id')) {
+      redirect(base_url());
+    }
+    else {
+      $params['showMsg'] = false;
+      $this->load->view('register', $params);
+    }
   }
 }

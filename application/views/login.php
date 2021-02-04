@@ -14,8 +14,8 @@
 
   <div class="sidenav">
     <div class="login-main-text">
-      <h2>BLOG<br>Inicia sesión</h2>
-      <p>Autenticate o registrate.</p>
+      <h2>NOTAS.<br>Inicia sesión</h2>
+      <p>Bienvenido de nuevo.</p>
     </div>
   </div>
 
