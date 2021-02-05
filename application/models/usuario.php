@@ -27,7 +27,6 @@ class Usuario extends CI_Model {
   }
 
   public function verificar($data) {
-    //"select * from usuarios where correo = 'dante@gmail.com' and password = 'sdfsdfsdfsf'";
     $sql = "select * from usuarios where correo='".$data['correo']."' and password = '".$data['password']."'";
     return ($this->devuelveData($sql));
   }

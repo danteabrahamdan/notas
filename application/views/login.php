@@ -33,12 +33,12 @@
           
           <div class="form-group">
             <label>Correo electronico</label>
-            <input type="text" class="form-control" placeholder="Ingresa tu correo electronico" name="correo" required>
+            <input type="text" class="form-control" placeholder="Ingresa tu correo electronico" name="correo" required value="josem@gmail.com">
           </div>
 
           <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" placeholder="Ingresa tu contraseña" name="password" required>
+            <input type="password" class="form-control" placeholder="Ingresa tu contraseña" name="password" required value="123456Jose+">
           </div>
 
           <input type="submit" class="btn btn-black" value="INICIAR SESION">

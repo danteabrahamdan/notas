@@ -6,10 +6,10 @@ class Usuarios extends CI_Controller {
   function __construct() {
     parent::__construct();
     $this->load->model('Usuario', 'Usuario');
+    $this->load->model('Nota', 'Nota');
     $this->load->helper('validation');
   }
 
-  
   public function signup() {
     // 1ro Verificamos que no sean campos vacios
     if(!empty($_POST['correo']) || !empty($_POST['password']) || !empty($_POST['nombre'])) {
@@ -24,6 +24,7 @@ class Usuarios extends CI_Controller {
         
         // 3ro Verificamos la contraseña tenga al menos minimo de longitud, minusculas, mayusculas, numeros y carateres especiales 
         if(check_complex($_POST['password'], 8, 5)) {
+          $data['id_role'] = 2;
           // Guardamos los datos en la BBDD
           $this->Usuario->insert('usuarios', $data);
           header('Location:'.base_url().'login');
@@ -66,9 +67,12 @@ class Usuarios extends CI_Controller {
       }
       else {
         /* $sessionUser = array('id' => $usuario[0]['id'], 'correo' => $data['correo'], 'nombre' => $usuario[0]['nombre']); */
-        $sessionUser = array('id' => $usuario[0]['id'], 'correo' => $usuario[0]['correo'], 'nombre' => $usuario[0]['nombre']);
+        $sessionUser = array('id' => $usuario[0]['id'], 'correo' => $usuario[0]['correo'], 'nombre' => $usuario[0]['nombre'], 'id_role' => $usuario[0]['id_role']);
         $this->session->set_userdata($sessionUser);
+        $notas = $this->Nota->obtenerNotas();
+        $params['notas'] = $notas;
         header('Location:'.base_url().'home');
+        $this->load->view('home', $params);
       }
     }
     else {
