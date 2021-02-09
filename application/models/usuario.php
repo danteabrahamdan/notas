@@ -30,4 +30,10 @@ class Usuario extends CI_Model {
     $sql = "select * from usuarios where correo='".$data['correo']."' and password = '".$data['password']."'";
     return ($this->devuelveData($sql));
   }
+
+  public function updateUser($data) {
+    $sql = "update Usuarios set password = '".$data['passwordnew']."' where id = ".$this->session->userdata('id');
+    $query = $this->db->query($sql);
+    return $query;
+  }
 }

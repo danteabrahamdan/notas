@@ -86,4 +86,56 @@ class Usuarios extends CI_Controller {
     $this->session->sess_destroy();
     redirect(base_url().'login');
   }
+
+  public function cambiarPwd() {
+    // 1ra validacion
+    if(!empty($_POST['password']) || !empty($_POST['passwordnew']) || !empty($_POST['passwordrenew'])) {
+      $data['password'] = md5($_POST['password']);
+      $data['correo'] = $this->session->userdata('correo');
+      $usuario = $this->Usuario->verificar($data);
+      // 2da validacion
+      if(empty($usuario)) {
+        $this->info('contraseña actual incorrecta', 'danger');  
+      }
+      else {
+        // 3ra validación
+        if(md5($_POST['passwordnew']) != $data['password']) {
+          // 4ta validación
+          if($_POST['passwordrenew'] == $_POST['passwordnew']) {
+            // 5ta validación
+            if(check_complex($_POST['passwordnew'], 8, 5)) {
+              $data['passwordnew'] = md5($_POST['passwordnew']);
+              $this->Usuario->updateUser($data);
+              $this->info('Contraseña cambiada correctamente', 'success');
+            }
+            else {
+              $this->info('La contraseña debe incluir números, mayusculas, caracteres especiales y tener un mínimo de 8', 'danger');
+            }
+          }
+          else {
+            $this->info('La verificación de la nueva contraseña debe coincidir', 'danger');    
+          }
+        }
+        else {
+          $this->info('La nueva contraseña no debe ser igual a la anterior', 'danger');    
+        }
+      }
+    }
+    else {
+      $this->info('Completa todos los campos', 'danger');
+    }
+  }
+
+  public function info($msg, $tipo) {
+    $params['msg'] = $msg;
+    $params['showMsg'] = true;
+    $params['tipo'] = $tipo;
+    $data['correo'] = $this->session->userdata('correo');
+    $usuario = $this->Usuario->compareEmail($data);
+    $params['nombre'] = $usuario[0]['nombre'];
+    $params['correo'] = $usuario[0]['correo'];
+    $params['created'] = $usuario[0]['created'];
+    $params['updated'] = $usuario[0]['updated'];
+    $this->load->view('account', $params);
+  }
 }

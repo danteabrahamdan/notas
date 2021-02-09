@@ -45,7 +45,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Cuenta</a>
+            <a class="nav-link" href="account">Cuenta</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>usuarios/logout">Salir</a>

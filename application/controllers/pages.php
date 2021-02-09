@@ -6,6 +6,7 @@ class Pages extends CI_Controller {
   function __construct() {
     parent::__construct();
     $this->load->model('Nota', 'Nota');
+    $this->load->model('Usuario', 'Usuario');
   }
 
   public function index() {
@@ -103,5 +104,21 @@ class Pages extends CI_Controller {
   public function deleteall() {
     $this->Nota->deleteAll();
     header('Location:'.base_url().'recyclebin');
+  }
+
+  public function account() {
+    if(!$this->session->userdata('id')) {
+      redirect(base_url().'login');
+    }
+    else {
+      $data['correo'] = $this->session->userdata('correo');
+      $usuario = $this->Usuario->compareEmail($data);
+      $params['showMsg'] = false;
+      $params['nombre'] = $usuario[0]['nombre'];
+      $params['correo'] = $usuario[0]['correo'];
+      $params['created'] = $usuario[0]['created'];
+      $params['updated'] = $usuario[0]['updated'];
+      $this->load->view('account', $params);
+    }
   }
 }
